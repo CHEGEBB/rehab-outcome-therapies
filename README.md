@@ -17,7 +17,9 @@ rehab-website/
 │
 ├── components/
 │   ├── Header.tsx
-│   ├── Footer.tsx
+│   ├─ ─ Footer.tsx
+    ├──navbar.tsx
+    
 │   └── ServiceCard.tsx
 │
 ├── public/
