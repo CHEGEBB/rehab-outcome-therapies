@@ -7,9 +7,9 @@ import Link from 'next/link';
 import { Quote, ArrowRight } from 'lucide-react';
 
 // Testimonial images (replace with actual images)
-import testimonialImage1 from "@/assets/user1.jpg";
-import testimonialImage2 from "@/assets/user2.jpg";
-import testimonialImage3 from "@/assets/user3.jpg";
+import testimonialImage1 from "@/assets/ana.jpg";
+import testimonialImage2 from "@/assets/pic1.jpg";
+import testimonialImage3 from "@/assets/joe.jpg";
 
 const TestimonialsSection: React.FC = () => {
   const [currentTestimonialIndex, setCurrentTestimonialIndex] = useState(0);
@@ -23,13 +23,13 @@ const TestimonialsSection: React.FC = () => {
     },
     {
       quote: "As a therapist, I've never seen such a holistic and community-centered approach. They're not just treating individuals, but healing communities.",
-      author: "Dr. Marcus Chen",
+      author: "Dr. Marcus Brown",
       profession: "Clinical Psychologist",
       image: testimonialImage2
     },
     {
       quote: "This program gave me hope when I thought recovery was impossible. Their innovative methods and compassionate support changed everything.",
-      author: "Aisha Patel",
+      author: "Joe Gomez",
       profession: "Software Engineer",
       image: testimonialImage3
     }

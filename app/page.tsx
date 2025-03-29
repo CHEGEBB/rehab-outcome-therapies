@@ -16,12 +16,8 @@ import {
   Brain, 
   HeartPulse, 
   Users, 
-  BookOpen, 
-  Medal, 
-  Activity,
   Target, 
   Globe, 
-  Trees, 
   Leaf, 
   HandHelping, 
   Award 
@@ -47,7 +43,7 @@ const Homepage: React.FC = () => {
   // Parallax transformations
   const heroParallax = useTransform(scrollY, [0, 500], [0, -100]);
   const featuresParallax = useTransform(scrollY, [300, 800], [100, -50]);
-  const testimonialsParallax = useTransform(scrollY, [600, 1100], [200, -75]);
+  // const testimonialsParallax = useTransform(scrollY, [600, 1100], [200, -75]);
   const introductionParallax = useTransform(scrollY, [200, 700], [50, -100]);
 
   const sectionVariants = {
@@ -194,7 +190,7 @@ const Homepage: React.FC = () => {
           {/* Goals Section */}
           <motion.div 
             variants={sectionVariants}
-            className="mt-16 bg-white rounded-xl shadow-lg p-8"
+            className="mt-16 bg-white/60 rounded-xl shadow-lg p-8"
           >
             <h2 className="text-4xl text-center mb-10 text-[#0f766e]">Our Goals</h2>
             <div className="grid md:grid-cols-3 gap-6">
