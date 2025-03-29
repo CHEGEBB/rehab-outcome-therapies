@@ -43,7 +43,7 @@ const TestimonialsSection: React.FC = () => {
     }, 7000);
 
     return () => clearInterval(testimonialInterval);
-  }, []);
+  }, [testimonials.length]);
 
   const sectionVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -141,7 +141,7 @@ const TestimonialsSection: React.FC = () => {
           </h2>
           <p className="text-xl text-emerald-100 mb-8 max-w-2xl mx-auto">
             Take the first step towards personalized, community-centered occupational therapy. 
-            Our team is ready to support your unique path to wellness.
+            Our team is ready to support your unique path to wellness.😊
           </p>
           <Link 
             href="/contact" 

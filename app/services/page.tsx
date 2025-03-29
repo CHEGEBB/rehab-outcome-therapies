@@ -75,13 +75,13 @@ const ServicesPage: React.FC = () => {
   };
 
   // Card hover animations
-  const cardHoverVariants = {
-    hover: { 
-      scale: 1.03, 
-      boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
-      transition: { duration: 0.3 }
-    }
-  };
+  // const cardHoverVariants = {
+  //   hover: { 
+  //     scale: 1.03, 
+  //     boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.25)",
+  //     transition: { duration: 0.3 }
+  //   }
+  // };
 
   // Staggered card animations
   const containerVariants = {
@@ -513,7 +513,7 @@ const ServicesPage: React.FC = () => {
                 key={index}
                 variants={sectionVariants}
                 whileHover="hover"
-                variants={cardHoverVariants}
+                // variant={cardHoverVariants}
                 className="bg-white rounded-xl overflow-hidden shadow-lg border border-slate-100"
               >
                 <div className="p-8">
