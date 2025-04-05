@@ -52,7 +52,7 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 w-full z-50  backdrop-blur-md shadow-sm navbar">
+    <nav className="fixed top-0 left-0 w-full z-50 md:backdrop-blur-md shadow-sm navbar bg-white md:bg-transparent">
       <div className="container mx-auto px-4 py-0 flex justify-between items-center">
         {/* Logo */}
         <Link 
