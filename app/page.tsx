@@ -85,12 +85,21 @@ const Homepage: React.FC = () => {
 
   return (
     <div className="relative w-full overflow-x-hidden">
-      {/* Parallax Background - Fixed and Scaling */}
+      {/* Parallax Background with Infinite Animation */}
       <motion.div 
         className="fixed inset-0 z-0"
         style={{ 
           scale: useTransform(scrollY, [0, 500], [1, 1.2]),
           opacity: useTransform(scrollY, [0, 200], [1, 0.7])
+        }}
+        animate={{ 
+          filter: ["brightness(1)", "brightness(1.1)", "brightness(1)"],
+          scale: [1, 1.05, 1]
+        }}
+        transition={{ 
+          repeat: Infinity, 
+          duration: 15,
+          ease: "easeInOut"
         }}
       >
         <Image 
@@ -293,28 +302,21 @@ const Homepage: React.FC = () => {
         </div>
       </motion.div>
 
-      {/* Services Section - FIXED for Mobile Responsiveness */}
-      <motion.section 
-        style={{ translateY: useTransform(scrollY, [800, 1300], [150, -100]) }}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        className="relative bg-[#172554] py-16 md:py-20 overflow-hidden z-10"
+      {/* FIXED Services Section for Mobile Responsiveness */}
+      <section 
+        className="relative bg-[#172554] py-16 md:py-20 z-10 w-full"
       >
         <div className="container mx-auto px-4">
-          <motion.h2 
-            variants={sectionVariants}
-            className="text-3xl md:text-4xl text-center mb-10 md:mb-16 text-white"
-          >
+          <h2 className="text-3xl md:text-4xl text-center mb-10 md:mb-16 text-white">
             Our Comprehensive Services
-          </motion.h2>
+          </h2>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
             {[
               {
                 title: "Hand therapy for stroke rehabilitation",
                 description: "We specialize in hand therapy techniques designed specifically for stroke rehabilitation. Our evidence-based approaches focus on enhancing fine motor skills, strength, and coordination to promote independence in daily activities.",
-                icon: <HandHelpingIcon className="w-12 h-12 md:w-16 md:h-16 text-emerald-400" />,
+                icon: <HandHelpingIcon className="w-12 h-12 text-emerald-400" />,
                 image: serviceImage4,
                 details: [
                   "Individualized hand therapy programs",
@@ -325,7 +327,7 @@ const Homepage: React.FC = () => {
               {
                 title: "Self care",
                 description: "We focus on enhancing self-care skills through personalized therapy sessions. Our goal is to empower individuals to regain independence in daily activities, promoting overall well-being and quality of life.",
-                icon: <HeartPulse className="w-12 h-12 md:w-16 md:h-16 text-emerald-400" />,
+                icon: <HeartPulse className="w-12 h-12 text-emerald-400" />,
                 image: serviceImage5,
                 details: [
                   "Personalized self-care plans",
@@ -336,7 +338,7 @@ const Homepage: React.FC = () => {
               {
                 title: "Gross Motor Skills Development",
                 description: "Our therapy sessions are designed to enhance gross motor skills through engaging activities and exercises. We focus on improving coordination, balance, and strength to support overall physical development.",
-                icon: <Brain className="w-12 h-12 md:w-16 md:h-16 text-emerald-400" />,
+                icon: <Brain className="w-12 h-12 text-emerald-400" />,
                 image: serviceImage6,
                 details: [
                   "Structured gross motor activities",
@@ -347,7 +349,7 @@ const Homepage: React.FC = () => {
               {
                 title: "Community-Centered Therapy",
                 description: "We provide personalized occupational therapy that deeply integrates with community needs, focusing on individual empowerment and collective well-being. Our approach considers social, environmental, and personal factors to create holistic intervention strategies.",
-                icon: <Users className="w-12 h-12 md:w-16 md:h-16 text-emerald-400" />,
+                icon: <Users className="w-12 h-12 text-emerald-400" />,
                 image: serviceImage1,
                 details: [
                   "Tailored intervention plans",
@@ -358,7 +360,7 @@ const Homepage: React.FC = () => {
               {
                 title: "Fine Motor Skills Training",
                 description: "At Rehab-Outcome Therapies Our therapy sessions are designed to enhance fine motor skills through engaging activities and exercises. We focus on improving dexterity, hand-eye coordination, and strength to support overall physical development.",
-                icon: <Move className="w-12 h-12 md:w-16 md:h-16 text-emerald-400" />,
+                icon: <Move className="w-12 h-12 text-emerald-400" />,
                 image: serviceImage7,
                 details: [
                   "Structured fine motor activities",
@@ -369,7 +371,7 @@ const Homepage: React.FC = () => {
               {
                 title: "Advocacy Campaigns",
                 description: "We lead transformative advocacy initiatives that raise awareness about occupational therapy's critical role in community health. Our campaigns focus on policy development, community education, and systemic change.",
-                icon: <HandHelping className="w-12 h-12 md:w-16 md:h-16 text-emerald-400" />,
+                icon: <HandHelping className="w-12 h-12 text-emerald-400" />,
                 image: serviceImage3,
                 details: [
                   "Public health awareness programs",
@@ -378,59 +380,46 @@ const Homepage: React.FC = () => {
                 ]
               }
             ].map((service, index) => (
-              <motion.div 
+              <div 
                 key={index}
-                variants={{
-                  hidden: { opacity: 0, y: 50 },
-                  visible: { 
-                    opacity: 1, 
-                    y: 0,
-                    transition: { 
-                      duration: 0.8,
-                      delay: index * 0.1,
-                      ease: "easeOut"
-                    }
-                  }
-                }}
-                whileHover={{ scale: 1.03, transition: { duration: 0.3 } }}
-                className="bg-slate-800/60 rounded-xl overflow-hidden shadow-2xl flex flex-col h-full"
+                className="bg-slate-800/60 rounded-xl overflow-hidden shadow-xl h-full w-full"
               >
-                {/* Fixed Image Container for All Screen Sizes */}
-                <div className="relative h-48 w-full overflow-hidden">
+                {/* Fixed Image Container with Reliable Height */}
+                <div className="relative h-40 w-full">
                   <Image 
                     src={service.image}
                     alt={service.title}
                     fill
-                    priority
-                    quality={90}
-                    className="object-cover transition-transform duration-500 hover:scale-110"
+                    sizes="(max-width: 768px) 100vw, 33vw"
+                    priority={index < 3}
+                    className="object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-b from-[#172554]/50 to-[#0f766e]/30"></div>
                 </div>
 
                 {/* Service Content */}
-                <div className="p-5 md:p-6 text-white flex-grow flex flex-col">
-                  <div className="flex items-center mb-3 md:mb-4">
-                    <div className="mr-3 md:mr-4">{service.icon}</div>
-                    <h3 className="text-xl md:text-2xl font-semibold">{service.title}</h3>
+                <div className="p-4 text-white flex flex-col h-full">
+                  <div className="flex items-start mb-3">
+                    <div className="mr-3 flex-shrink-0">{service.icon}</div>
+                    <h3 className="text-lg font-semibold">{service.title}</h3>
                   </div>
                   
-                  <p className="mb-4 text-emerald-100 flex-grow">{service.description}</p>
+                  <p className="mb-4 text-emerald-100 text-sm">{service.description}</p>
                   
-                  <div className="mt-auto">
-                    <h4 className="font-semibold mb-2 text-emerald-300">Key Offerings:</h4>
-                    <ul className="list-disc list-inside text-emerald-100 space-y-1 md:space-y-2">
+                  <div className="mt-2">
+                    <h4 className="font-semibold mb-2 text-emerald-300 text-sm">Key Offerings:</h4>
+                    <ul className="list-disc list-inside text-emerald-100 text-sm space-y-1">
                       {service.details.map((detail, idx) => (
                         <li key={idx}>{detail}</li>
                       ))}
                     </ul>
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
-      </motion.section>
+      </section>
 
       <TestimonialsSection />
       <Footer />
