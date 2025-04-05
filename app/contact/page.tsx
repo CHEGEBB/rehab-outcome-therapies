@@ -5,7 +5,6 @@ import { motion, useScroll, useTransform, useAnimation } from 'framer-motion';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { 
-  MapPin, 
   Phone, 
   Mail, 
   Clock, 
@@ -15,7 +14,8 @@ import {
   Twitter,
   Facebook,
   Linkedin,
-  Calendar
+  Calendar,
+  MessageCircle
 } from 'lucide-react';
 
 const ContactPage = () => {
@@ -44,7 +44,6 @@ const ContactPage = () => {
   // Parallax transformations
   const headerParallax = useTransform(scrollY, [0, 500], [0, -100]);
   const contentParallax = useTransform(scrollY, [300, 800], [50, -30]);
-  const mapParallax = useTransform(scrollY, [600, 1100], [100, -50]);
 
   // Form submission handler
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -213,7 +212,7 @@ const ContactPage = () => {
             variants={staggerContainerVariants}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
           >
-            {/* Location Card */}
+            {/* Virtual Support Card (Replacing Location Card) */}
             <motion.div
               variants={cardVariants}
               whileHover="hover"
@@ -222,12 +221,12 @@ const ContactPage = () => {
               <div className="absolute top-0 right-0 w-24 h-24 bg-cyan-500/10 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl"></div>
               <div className="mb-4">
                 <div className="w-14 h-14 rounded-full bg-gradient-to-br from-cyan-500/20 to-emerald-500/20 flex items-center justify-center mb-4">
-                  <MapPin className="w-6 h-6 text-indigo-600" />
+                  <MessageCircle className="w-6 h-6 text-indigo-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-indigo-900 mb-2">Visit Us</h3>
+                <h3 className="text-xl font-semibold text-indigo-900 mb-2">Virtual Support</h3>
                 <p className="text-slate-600">
-                  123 Wellness Avenue<br />
-                  Nairobi, Kenya
+                  Available for online<br />
+                  consultations and support
                 </p>
               </div>
               <motion.button
@@ -235,7 +234,7 @@ const ContactPage = () => {
                 whileTap={{ scale: 0.95 }}
                 className="inline-flex items-center text-sm font-medium text-cyan-600 hover:text-cyan-700"
               >
-                Get Directions
+                Book Virtual Session
                 <ArrowRight className="ml-1 w-4 h-4" />
               </motion.button>
             </motion.div>
@@ -253,8 +252,8 @@ const ContactPage = () => {
                 </div>
                 <h3 className="text-xl font-semibold text-indigo-900 mb-2">Call Us</h3>
                 <p className="text-slate-600">
-                  Chair-person: 0756702812<br />
-                  Secretary: 0748960787
+                  0756702812<br />
+                  0748960787
                 </p>
               </div>
               <motion.button
@@ -323,7 +322,7 @@ const ContactPage = () => {
         </div>
       </motion.section>
       
-      {/* Contact Form & Map Section */}
+      {/* Contact Form Section - Removed Map */}
       <section className="py-16">
         <div className="container mx-auto px-6">
           <div className="flex flex-col lg:flex-row gap-12">
@@ -485,37 +484,17 @@ const ContactPage = () => {
               </div>
             </motion.div>
             
-            {/* Map and Social */}
+            {/* Social Media Section - Replaced Map */}
             <motion.div 
               className="lg:w-1/2"
-              style={{ y: mapParallax }}
             >
-              {/* Map */}
-              <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.1 }}
-                transition={{ duration: 0.8 }}
-                className="h-[400px] rounded-3xl overflow-hidden shadow-xl mb-8 relative bg-slate-100"
-              >
-                {/* Google Maps Embed - Replace with your actual location */}
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d255282.35853648197!2d36.68258499977898!3d-1.3031933983716837!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f1172d84d49a7%3A0xf7cf0254b297924c!2sNairobi%2C%20Kenya!5e0!3m2!1sen!2sus!4v1711665450209!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen={true}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
-              </motion.div>
-              
               {/* Connect with us */}
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.1 }}
                 transition={{ duration: 0.8 }}
+                className="bg-white rounded-3xl shadow-xl p-8 mb-8"
               >
                 <h3 className="text-2xl font-bold text-indigo-900 mb-2">Connect With Us</h3>
                 <div className="w-12 h-1 bg-gradient-to-r from-cyan-500 to-emerald-500 mb-4"></div>
@@ -523,23 +502,72 @@ const ContactPage = () => {
                   Follow us on social media to stay updated on our latest workshops, community events, and helpful resources.
                 </p>
                 
-                <div className="flex gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
                   {[
-                    { icon: <Facebook />, color: "bg-blue-600", hover: "hover:bg-blue-700" },
-                    { icon: <Twitter />, color: "bg-sky-500", hover: "hover:bg-sky-600" },
-                    { icon: <Instagram />, color: "bg-pink-600", hover: "hover:bg-pink-700" },
-                    { icon: <Linkedin />, color: "bg-blue-700", hover: "hover:bg-blue-800" }
+                    { icon: <Facebook />, color: "bg-blue-600", hover: "hover:bg-blue-700", text: "Facebook" },
+                    { icon: <Twitter />, color: "bg-sky-500", hover: "hover:bg-sky-600", text: "Twitter" },
+                    { icon: <Instagram />, color: "bg-pink-600", hover: "hover:bg-pink-700", text: "Instagram" },
+                    { icon: <Linkedin />, color: "bg-blue-700", hover: "hover:bg-blue-800", text: "LinkedIn" }
                   ].map((social, index) => (
                     <motion.a
                       key={index}
                       href="#"
-                      whileHover={{ scale: 1.1 }}
-                      whileTap={{ scale: 0.9 }}
-                      className={`w-12 h-12 ${social.color} ${social.hover} rounded-full flex items-center justify-center text-white shadow-lg transition-colors duration-300`}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                      className={`py-3 ${social.color} ${social.hover} rounded-xl flex flex-col items-center justify-center text-white shadow transition-colors duration-300`}
                     >
                       {social.icon}
+                      <span className="mt-2 text-sm font-medium">{social.text}</span>
                     </motion.a>
                   ))}
+                </div>
+                
+                <div className="bg-gradient-to-r from-indigo-50 to-cyan-50 p-6 rounded-xl">
+                  <h4 className="text-lg font-semibold text-indigo-900 mb-3">Stay Updated</h4>
+                  <p className="text-slate-600 mb-4">Subscribe to our newsletter for the latest updates, resources, and community events.</p>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <input 
+                      type="email" 
+                      placeholder="Your email address" 
+                      className="flex-1 px-4 py-3 rounded-lg border border-slate-300 focus:ring-2 focus:ring-cyan-500 focus:border-transparent transition-all duration-300 bg-white"
+                    />
+                    <motion.button
+                      whileHover={{ scale: 1.03 }}
+                      whileTap={{ scale: 0.97 }}
+                      className="px-6 py-3 bg-gradient-to-r from-cyan-600 to-emerald-600 text-white rounded-lg font-medium shadow hover:shadow-lg transition-all duration-300"
+                    >
+                      Subscribe
+                    </motion.button>
+                  </div>
+                </div>
+              </motion.div>
+              
+              {/* Testimonial */}
+              <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.1 }}
+                transition={{ duration: 0.8 }}
+                className="bg-gradient-to-br from-indigo-600 to-cyan-600 rounded-3xl shadow-xl p-8 text-white relative overflow-hidden"
+              >
+                <div className="absolute top-0 right-0 w-64 h-64 rounded-full bg-white/10 -translate-y-1/2 translate-x-1/2 blur-3xl"></div>
+                <div className="relative z-10">
+                  <svg className="w-12 h-12 text-cyan-300 mb-4 opacity-80" fill="currentColor" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.7 25.4c-2.1 0-3.9-0.7-5.3-2.1-1.4-1.4-2.1-3.2-2.1-5.3 0-2.9 1-5.7 3.1-8.5 2.1-2.8 4.9-4.8 8.4-6.1l1.5 3c-2.1 0.8-3.9 2-5.3 3.5-1.4 1.5-2.1 3-2.2 4.6 0.5-0.2 1.2-0.3 2-0.3 1.8 0 3.3 0.6 4.5 1.8 1.2 1.2 1.8 2.7 1.8 4.5 0 1.8-0.6 3.3-1.8 4.5-1.2 1.2-2.7 1.8-4.5 1.8zM26.1 25.4c-2.1 0-3.9-0.7-5.3-2.1-1.4-1.4-2.1-3.2-2.1-5.3 0-2.9 1-5.7 3.1-8.5 2.1-2.8 4.9-4.8 8.4-6.1l1.5 3c-2.1 0.8-3.9 2-5.3 3.5-1.4 1.5-2.1 3-2.2 4.6 0.5-0.2 1.2-0.3 2-0.3 1.8 0 3.3 0.6 4.5 1.8 1.2 1.2 1.8 2.7 1.8 4.5 0 1.8-0.6 3.3-1.8 4.5-1.2 1.2-2.7 1.8-4.5 1.8z" />
+                  </svg>
+                  <p className="text-lg mb-6">
+                    The therapists have been incredibly supportive throughout my recovery journey.
+                    Their specialized approach and dedication have made a tremendous difference in my daily life.
+                  </p>
+                  <div className="flex items-center">
+                    <div className="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center text-lg font-bold">
+                      MK
+                    </div>
+                    <div className="ml-4">
+                      <h4 className="font-semibold">Maria K.</h4>
+                      <p className="text-cyan-100 text-sm">Client since 2023</p>
+                    </div>
+                  </div>
                 </div>
               </motion.div>
             </motion.div>
