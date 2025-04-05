@@ -11,7 +11,6 @@ import {
   Send, 
   Mail, 
   Phone, 
-  MapPin,
   ChevronRight
 } from 'lucide-react';
 
@@ -174,11 +173,11 @@ const Footer: React.FC = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Phone className="w-5 h-5 text-emerald-500" />
-                <span>+1 (555) 987-6543</span>
+                <span>+254756702812</span>
               </div>
               <div className="flex items-center space-x-3">
-                <MapPin className="w-5 h-5 text-emerald-500" />
-                <span>456 Recovery Lane, Wellness City, WC 54321</span>
+                <Phone className="w-5 h-5 text-emerald-500" />
+                <span>+254748960787</span>
               </div>
             </div>
           </div>

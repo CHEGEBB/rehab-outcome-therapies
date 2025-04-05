@@ -10,8 +10,12 @@ import missionImage1 from "@/assets/header.jpg";
 import missionImage2 from "@/assets/bg.jpeg";
 import missionImage3 from "@/assets/back.jpeg";
 import serviceImage1 from "@/assets/community.jpg";  // Community-Centered Therapy
-import serviceImage2 from "@/assets/back2.jpeg";  // Sustainability in Practice
 import serviceImage3 from "@/assets/advocacy.jpg";  // Advocacy Campaigns
+import serviceImage4 from "../assets/hand.jpeg";
+import serviceImage5 from "../assets/self.jpeg"
+import serviceImage6 from "../assets/gross.jpeg"
+import serviceImage7 from "../assets/fine.jpeg"
+
 import { 
   Brain, 
   HeartPulse, 
@@ -20,7 +24,9 @@ import {
   Globe, 
   Leaf, 
   HandHelping, 
-  Award 
+  Award, 
+  HandHelpingIcon,
+  Move
 } from 'lucide-react';
 import TestimonialsSection from '@/components/Testimonials';
 import Footer from '@/components/Footer';
@@ -281,6 +287,41 @@ const Homepage: React.FC = () => {
 
     <div className="grid md:grid-cols-3 gap-12">
       {[
+        
+        {
+          title:"Hand therapy for stroke rehabilitation",
+          description:"We specialize in hand therapy techniques designed specifically for stroke rehabilitation. Our evidence-based approaches focus on enhancing fine motor skills, strength, and coordination to promote independence in daily activities.",
+          icon: <HandHelpingIcon className="w-16 h-16 text-emerald-400" />,
+          image: serviceImage4,
+          details: [
+            "Individualized hand therapy programs",
+            "Functional task training",
+            "Adaptive equipment recommendations"
+          ]
+        },
+        {
+          title:"Self care ",
+          description:"We focus on enhancing self-care skills through personalized therapy sessions. Our goal is to empower individuals to regain independence in daily activities, promoting overall well-being and quality of life.",
+          icon: <HeartPulse className="w-16 h-16 text-emerald-400" />,
+          image: serviceImage5,
+          details: [
+            "Personalized self-care plans",
+            "Adaptive strategies for daily living",
+            "Support for caregivers and families"
+          ]
+
+        },
+        {
+          title: "Gross Motor Skills Development",
+          description: "Our therapy sessions are designed to enhance gross motor skills through engaging activities and exercises. We focus on improving coordination, balance, and strength to support overall physical development.",
+          icon: <Brain className="w-16 h-16 text-emerald-400" />,
+          image: serviceImage6,
+          details: [
+            "Structured gross motor activities",
+            "Play-based interventions",
+            "Progress tracking and assessments"
+          ]
+        },
         {
           title: "Community-Centered Therapy",
           description: "We provide personalized occupational therapy that deeply integrates with community needs, focusing on individual empowerment and collective well-being. Our approach considers social, environmental, and personal factors to create holistic intervention strategies.",
@@ -293,15 +334,16 @@ const Homepage: React.FC = () => {
           ]
         },
         {
-          title: "Sustainability in Practice",
-          description: "Integrating environmental consciousness into our therapeutic approaches, we develop sustainable intervention models that promote both individual health and ecological well-being. Our programs focus on creating resilient, adaptive strategies.",
-          icon: <Leaf className="w-16 h-16 text-emerald-400" />,
-          image: serviceImage2,
+          title: "Fine Motor Skills Training",
+          description:"At Rehab-Outcome Therapies Our therapy sessions are designed to enhance fine motor skills through engaging activities and exercises. We focus on improving dexterity, hand-eye coordination, and strength to support overall physical development.",
+          icon:<Move className='w-16 h-16 text-emerald-400'/>,
+          image: serviceImage7,
           details: [
-            "Eco-friendly rehabilitation techniques",
-            "Green health intervention strategies",
-            "Environmental adaptation consultations"
+            "Structured fine motor activities",
+            "Play-based interventions",
+            "Progress tracking and assessments"
           ]
+          
         },
         {
           title: "Advocacy Campaigns",
