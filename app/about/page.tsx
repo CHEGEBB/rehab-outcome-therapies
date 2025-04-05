@@ -81,7 +81,7 @@ const AboutPage: React.FC = () => {
             layout="fill"
             objectFit="cover"
             priority
-            quality={90}
+            quality={100}
           />
         </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#172554]/60 via-[#0f766e]/40 to-[#172554]/30"></div>
