@@ -55,10 +55,10 @@ const Footer: React.FC = () => {
     { 
       title: "Resources", 
       links: [
-        { name: "Treatment Programs", href: "/programs" },
-        { name: "Patient Resources", href: "/resources" },
-        { name: "Success Stories", href: "/success-stories" },
-        { name: "FAQ", href: "/faq" }
+        { name: "Treatment Programs", href: "#" },
+        { name: "Patient Resources", href: "#" },
+        { name: "Success Stories", href: "#" },
+        { name: "FAQ", href: "/contact" }
       ]
     }
   ];
