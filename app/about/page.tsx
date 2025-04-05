@@ -49,14 +49,32 @@ const AboutPage: React.FC = () => {
     }
   };
 
+  // Background animation variants
+  const backgroundVariants = {
+    animate: {
+      scale: [1, 1.05, 1],
+      filter: ["brightness(1)", "brightness(1.1)", "brightness(1)"],
+      transition: {
+        duration: 20,
+        ease: "easeInOut",
+        repeat: Infinity,
+        repeatType: "reverse" as "reverse" | "loop" | "mirror"
+      }
+    }
+  };
+
   return (
     <div 
       ref={scrollRef}
       className="relative w-full overflow-x-hidden bg-[#f4f4f4]"
     >
-      {/* Background Parallax Image Section */}
+      {/* Background Parallax Image Section with Infinite Animation */}
       <div className="fixed inset-0 z-0 overflow-hidden">
-        <div className="absolute inset-0 w-full h-full">
+        <motion.div 
+          className="absolute inset-0 w-full h-full"
+          variants={backgroundVariants}
+          animate="animate"
+        >
           <Image
             src="/assets/about.jpg" 
             alt="Background Image"
@@ -65,7 +83,7 @@ const AboutPage: React.FC = () => {
             priority
             quality={90}
           />
-        </div>
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#172554]/60 via-[#0f766e]/40 to-[#172554]/30"></div>
       </div>
 
