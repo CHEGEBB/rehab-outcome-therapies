@@ -3,6 +3,7 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import Link from 'next/link';
+import Image from 'next/image';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import { 
@@ -22,11 +23,7 @@ import {
   Clock
 } from 'lucide-react';
 
-import "../../sass/about.scss"
-
-
-// eslint-disable-next-line @typescript-eslint/no-require-imports
-const backgroundVideoSrc = require("../../assets/videos/about.mp4").default;
+import "../../sass/about.scss";
 
 const AboutPage: React.FC = () => {
   const scrollRef = useRef(null);
@@ -52,23 +49,23 @@ const AboutPage: React.FC = () => {
     }
   };
 
-
   return (
     <div 
       ref={scrollRef}
       className="relative w-full overflow-x-hidden bg-[#f4f4f4]"
     >
-      {/* Background Video Section */}
+      {/* Background Parallax Image Section */}
       <div className="fixed inset-0 z-0 overflow-hidden">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className="absolute w-full h-full object-cover"
-        >
-          <source src={backgroundVideoSrc} type="video/mp4" />
-        </video>
+        <div className="absolute inset-0 w-full h-full">
+          <Image
+            src="/assets/about.jpg" 
+            alt="Background Image"
+            layout="fill"
+            objectFit="cover"
+            priority
+            quality={90}
+          />
+        </div>
         <div className="absolute inset-0 bg-gradient-to-r from-[#172554]/60 via-[#0f766e]/40 to-[#172554]/30"></div>
       </div>
 
@@ -317,105 +314,105 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-         {/* Why Choose Us Section */}
-  <motion.section 
-    initial="hidden"
-    whileInView="visible"
-    viewport={{ once: true, amount: 0.2 }}
-    className="relative bg-emerald-100 py-20"
-  >
-    <div className="container mx-auto px-4">
-      <motion.h2 
-        variants={sectionVariants}
-        className="text-4xl text-center mb-16 text-[#0f766e]"
+      {/* Why Choose Us Section */}
+      <motion.section 
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        className="relative bg-emerald-100 py-20"
       >
-        Why Choose Us
-      </motion.h2>
-
-      <div className="grid md:grid-cols-3 gap-8">
-        {[
-          {
-            icon: <Star className="w-16 h-16 text-[#0f766e]" />,
-            title: "Expert Care",
-            description: "Our team comprises highly skilled and compassionate occupational therapists with extensive experience and specialized training.",
-            details: [
-              "Advanced clinical expertise",
-              "Continuous professional development",
-              "Specialized intervention strategies"
-            ]
-          },
-          {
-            icon: <Shield className="w-16 h-16 text-[#0f766e]" />,
-            title: "Personalized Approach",
-            description: "We provide tailored therapy solutions that address individual needs, ensuring comprehensive and meaningful support.",
-            details: [
-              "Client-centered interventions",
-              "Customized treatment plans",
-              "Holistic assessment"
-            ]
-          },
-          {
-            icon: <Heart className="w-16 h-16 text-[#0f766e]" />,
-            title: "Compassionate Care",
-            description: "We prioritize empathy, respect, and understanding, creating a supportive environment for healing and growth.",
-            details: [
-              "Emotional support",
-              "Non-judgmental approach",
-              "Empowering client relationships"
-            ]
-          },
-          {
-            icon: <Zap className="w-16 h-16 text-[#0f766e]" />,
-            title: "Innovative Solutions",
-            description: "We leverage cutting-edge techniques and technology to enhance therapeutic outcomes and client experiences.",
-            details: [
-              "Advanced therapeutic techniques",
-              "Technology-enhanced interventions",
-              "Evidence-based practices"
-            ]
-          },
-          {
-            icon: <Clock className="w-16 h-16 text-[#0f766e]" />,
-            title: "Accessibility",
-            description: "We offer flexible scheduling, multiple service delivery models, and convenient communication channels.",
-            details: [
-              "Flexible appointment times",
-              "Virtual and in-person options",
-              "Comprehensive support"
-            ]
-          },
-          {
-            icon: <Medal className="w-16 h-16 text-[#0f766e]" />,
-            title: "Community Impact",
-            description: "Our commitment extends beyond individual therapy to creating positive change in the broader community.",
-            details: [
-              "Community outreach",
-              "Social justice initiatives",
-              "Collaborative partnerships"
-            ]
-          }
-        ].map((quality, index) => (
-          <motion.div 
-            key={index}
+        <div className="container mx-auto px-4">
+          <motion.h2 
             variants={sectionVariants}
-            className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition"
+            className="text-4xl text-center mb-16 text-[#0f766e]"
           >
-            <div className="flex justify-center mb-4">{quality.icon}</div>
-            <h3 className="text-xl font-semibold text-[#0f766e] mb-3">{quality.title}</h3>
-            <p className="text-slate-700 mb-4">{quality.description}</p>
-            <div className="mt-4">
-              <h4 className="font-semibold mb-2 text-[#0f766e]/80">Key Highlights:</h4>
-              <ul className="list-disc list-inside text-slate-600 space-y-2">
-                {quality.details.map((detail, idx) => (
-                  <li key={idx}>{detail}</li>
-                ))}
-              </ul>
-            </div>
-          </motion.div>
-        ))}
-      </div>
-    </div>
-  </motion.section>
+            Why Choose Us
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                icon: <Star className="w-16 h-16 text-[#0f766e]" />,
+                title: "Expert Care",
+                description: "Our team comprises highly skilled and compassionate occupational therapists with extensive experience and specialized training.",
+                details: [
+                  "Advanced clinical expertise",
+                  "Continuous professional development",
+                  "Specialized intervention strategies"
+                ]
+              },
+              {
+                icon: <Shield className="w-16 h-16 text-[#0f766e]" />,
+                title: "Personalized Approach",
+                description: "We provide tailored therapy solutions that address individual needs, ensuring comprehensive and meaningful support.",
+                details: [
+                  "Client-centered interventions",
+                  "Customized treatment plans",
+                  "Holistic assessment"
+                ]
+              },
+              {
+                icon: <Heart className="w-16 h-16 text-[#0f766e]" />,
+                title: "Compassionate Care",
+                description: "We prioritize empathy, respect, and understanding, creating a supportive environment for healing and growth.",
+                details: [
+                  "Emotional support",
+                  "Non-judgmental approach",
+                  "Empowering client relationships"
+                ]
+              },
+              {
+                icon: <Zap className="w-16 h-16 text-[#0f766e]" />,
+                title: "Innovative Solutions",
+                description: "We leverage cutting-edge techniques and technology to enhance therapeutic outcomes and client experiences.",
+                details: [
+                  "Advanced therapeutic techniques",
+                  "Technology-enhanced interventions",
+                  "Evidence-based practices"
+                ]
+              },
+              {
+                icon: <Clock className="w-16 h-16 text-[#0f766e]" />,
+                title: "Accessibility",
+                description: "We offer flexible scheduling, multiple service delivery models, and convenient communication channels.",
+                details: [
+                  "Flexible appointment times",
+                  "Virtual and in-person options",
+                  "Comprehensive support"
+                ]
+              },
+              {
+                icon: <Medal className="w-16 h-16 text-[#0f766e]" />,
+                title: "Community Impact",
+                description: "Our commitment extends beyond individual therapy to creating positive change in the broader community.",
+                details: [
+                  "Community outreach",
+                  "Social justice initiatives",
+                  "Collaborative partnerships"
+                ]
+              }
+            ].map((quality, index) => (
+              <motion.div 
+                key={index}
+                variants={sectionVariants}
+                className="bg-white p-6 rounded-xl text-center hover:shadow-lg transition"
+              >
+                <div className="flex justify-center mb-4">{quality.icon}</div>
+                <h3 className="text-xl font-semibold text-[#0f766e] mb-3">{quality.title}</h3>
+                <p className="text-slate-700 mb-4">{quality.description}</p>
+                <div className="mt-4">
+                  <h4 className="font-semibold mb-2 text-[#0f766e]/80">Key Highlights:</h4>
+                  <ul className="list-disc list-inside text-slate-600 space-y-2">
+                    {quality.details.map((detail, idx) => (
+                      <li key={idx}>{detail}</li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </motion.section>
 
       <Footer />
     </div>
