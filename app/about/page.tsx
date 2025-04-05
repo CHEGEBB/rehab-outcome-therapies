@@ -101,7 +101,7 @@ const AboutPage: React.FC = () => {
           <motion.h1 
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-6xl font-bold mb-6 text-white drop-shadow-lg"
+            className="text-4xl font-bold mb-6 text-white drop-shadow-lg"
           >
             Empowering Communities
           </motion.h1>
